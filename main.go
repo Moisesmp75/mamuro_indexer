@@ -30,7 +30,14 @@ func main() {
 		defer pprof.StopCPUProfile()
 	}
 	startTime := time.Now()
-	path := "full\\of\\path"
+
+	if len(os.Args) < 2 {
+		fmt.Println("Falta especificar la ruta del directorio como argumento.")
+		return
+	}
+
+	path := os.Args[1]
+
 	helpers.Indexer(path)
 	endTime := time.Now()
 	duration := endTime.Sub(startTime)
