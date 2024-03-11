@@ -19,13 +19,13 @@ var (
 func main() {
 	flag.Parse()
 	if *cpuprofile != "" {
-		f, err := os.Create(*cpuprofile)
+		f, err := os.Create(*cpuprofile + ".prof")
 		if err != nil {
-				log.Fatal("no se pudo crear el perfil de CPU: ", err)
+			log.Fatal("no se pudo crear el perfil de CPU: ", err)
 		}
 		defer f.Close()
 		if err := pprof.StartCPUProfile(f); err != nil {
-				log.Fatal("no se pudo iniciar el perfil de CPU: ", err)
+			log.Fatal("no se pudo iniciar el perfil de CPU: ", err)
 		}
 		defer pprof.StopCPUProfile()
 	}
@@ -37,14 +37,14 @@ func main() {
 	fmt.Printf("El programa tardó %s en ejecutarse.\n", duration)
 
 	if *memprofile != "" {
-		f, err := os.Create(*memprofile)
+		f, err := os.Create(*memprofile + ".prof")
 		if err != nil {
-				log.Fatal("no se pudo crear el perfil de memoria: ", err)
+			log.Fatal("no se pudo crear el perfil de memoria: ", err)
 		}
 		defer f.Close()
 		runtime.GC()
 		if err := pprof.WriteHeapProfile(f); err != nil {
-				log.Fatal("no se pudo escribir el perfil de memoria: ", err)
+			log.Fatal("no se pudo escribir el perfil de memoria: ", err)
 		}
 	}
 }
