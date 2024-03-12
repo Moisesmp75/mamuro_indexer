@@ -32,7 +32,7 @@ ZINC_FIRST_ADMIN_USER=admin ZINC_FIRST_ADMIN_PASSWORD=Complexpass#123</pre>
   <li>debera mostrarse lo siguiente o similar:</li>
   <pre>dot - graphviz version 9.0.0 (20230911.1827)</pre>
   <li>Luego, en la ruta del proyecto ejecutar el siguiente comando:</li>
-  <pre>go tool pprof -http=:8080 cpu-v1.prof</pre>
-  donde cpu-v1.prof es la version del indexador, puede usar cpu-v1.prof o cpu-v2.prof. Este comando le dirigira al navegador con la ruta http://localhost:8080/ui/
+  <pre>go tool pprof -http=:8080 cpu.prof</pre>
+  donde cpu.prof es el profile del cpu, puede usar cpu.prof o mem.prof. Este comando le dirigira al navegador con la ruta http://localhost:8080/ui/
   </ul>
 </ol>
